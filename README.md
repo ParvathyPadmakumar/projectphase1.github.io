@@ -50,7 +50,7 @@ This is a **Dashboard Portfolio** webpage designed to showcase a user's profile,
 
 ## Future Enhancements
 - Add more projects to the carousel.
-- Include animations for the sidebar toggle.
+- Include animations for each page.
 - Improve accessibility features for better usability.
 
 ## Author
