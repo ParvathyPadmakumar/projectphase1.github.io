@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Color Palette Generator</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    .palette-container {
+      display: flex;
+      gap: 1rem;
+      padding: 2rem;
+      background-color: white;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      border-radius: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .color-box {
+      width: 100px;
+      height: 150px;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      padding-bottom: 0.5rem;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .color-box:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 0.5rem;
+      background-color: #4D96FF;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #2563eb;
+    }
+  </style>
+</head>
+<body>
+  <div class="palette-container" id="palette">
+    <div class="color-box">#000000</div>
+    <div class="color-box">#000000</div>
+    <div class="color-box">#000000</div>
+    <div class="color-box">#000000</div>
+    <div class="color-box">#000000</div>
+  </div>
+  <button onclick="generatePalette()">Generate Palette</button>
+
+  <script>
+    function getRandomColor() {
+      const letters = '0123456789ABCDEF';
+      let color = '#';
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+
+    function generatePalette() {
+      const boxes = document.querySelectorAll('.color-box');
+      boxes.forEach(box => {
+        const newColor = getRandomColor();
+        box.style.backgroundColor = newColor;
+        box.textContent = newColor;
+      });
+    }
+
+    // Generate a palette when the page loads
+    window.onload = generatePalette;
+  </script>
+</body>
+</html>
